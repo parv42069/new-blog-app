@@ -5,6 +5,10 @@ export default {
       const user = await User.findById(id);
       return user;
     },
+    async users() {
+      const users = await User.find();
+      return users;
+    },
   },
   Mutation: {
     async addNewUser(_: any, { addUserInput: { username, email } }: any) {

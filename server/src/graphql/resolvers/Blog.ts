@@ -3,7 +3,10 @@ import User from '../../models/User';
 export default {
   Query: {
     async blog(_: any, { id }: any) {
-      const blog = await Blog.findById(id);
+      const blog = await Blog.findById(id).populate({
+        path: 'author',
+        model: 'User',
+      });
       return blog;
     },
     async blogs() {
